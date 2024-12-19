@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML QUIZ</title>
+    <style>
+        /* Reset and Base Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+            width: 90%;
+            max-width: 350px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+
+        .quiz {
+            margin-bottom: 20px;
+        }
+
+        .question-container {
+            font-size: 18px;
+            font-weight: bold;
+            color: #f1f1f1;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #252525;
+            border: 1px solid #333;
+            border-radius: 5px;
+        }
+
+        .choice-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .choice {
+            margin-bottom: 4px;
+            background-color: #292929;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #b0b0b0;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .choice:hover {
+            background-color: #3d3d3d;
+            color: #ffffff;
+        }
+
+        #results {
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .passed {
+            color: #28a745;
+        }
+
+        .failed {
+            color: #dc3545;
+        }
+
+        #start, #restart, #verify, #next {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #start:hover, #restart:hover, #verify:hover, #next:hover {
+            background-color: #0056b3;
+        }
+
+        #next {
+            width: 100%;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+
+            .question-container {
+                font-size: 16px;
+            }
+
+            .choice {
+                font-size: 14px;
+            }
+
+            #start {
+                font-size: 14px;
+            }
+        }
+
+        .answer-container {
+            background-color: #292929;
+            margin-top: 10px;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .answers {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<script src="./script.js"></script>
+<body>
+    <div class="container">
+        <h1>HTML QUIZ</h1>
+        <div class="quiz">
+            <div class="question-container"> 
+            </div>
+            <div class="choice-container">
+                
+            </div>
+            <button id="next">Next</button>
+        </div>
+
+        <div id="results" class=""> 
+        </div>
+
+        <div style="display: flex;flex-direction: column;width: 100%;">
+            <button id="start">Start Quiz</button>
+            <button id="restart">Restart Quiz</button>
+            <button id="verify">Verify Answers</button>
+        </div>
+
+        <div class="answers">
+            <div class="answer-container">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
