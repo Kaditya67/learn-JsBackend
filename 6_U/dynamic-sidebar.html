@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidebar</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        /* background-image: url("../images/colors.jpg"); */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: flex-start;
+      }
+      .sidebar {
+        border-radius: 20px;
+        width: 220px;
+        height: 97vh;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(
+          45deg,
+          #2d3e50 0%,
+          #364f6b 25%,
+          #3f729b 50%,
+          #ff6b6b 75%,
+          #ff8c94 100%
+        );
+        transition: width 0.3s;
+        justify-content: space-between;
+      }
+
+      .sidebar.collapsed {
+        width: 30px;
+      }
+
+      .sidebar-logo {
+        margin-top: 50px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        width: 180px;
+        height: 55px;
+        margin-bottom: 30px;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 1.6rem;
+        font-weight: bold;
+        line-height: 55px;
+        background-color: rgba(255, 255, 255, 0.95);
+        color: #333;
+      }
+
+      .sidebar.collapsed .sidebar-logo {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .sidebar-search {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        width: 100%;
+        position: relative;
+      }
+
+      .sidebar-search i {
+        color: #3f729b;
+        font-size: 1.5rem;
+        position: absolute;
+        left: 10px;
+      }
+
+      .sidebar-search i:hover {
+        cursor: pointer; /* Change cursor to pointer on hover */
+      }
+
+      .sidebar-search input[type="text"] {
+        width: 100%;
+        padding: 10px 10px 8px 35px;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.9);
+        transition: border-color 0.3s;
+      }
+
+      .sidebar.collapsed .sidebar-search input[type="text"] {
+        opacity: 0;
+      }
+
+      .sidebar.collapsed .sidebar-search i {
+        color: #fff;
+        padding-left: 0;
+        left: 5px;
+      }
+
+      .sidebar-search input[type="text"]:focus {
+        border-color: #ff8c94;
+        outline: none;
+      }
+
+      .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        flex-grow: 1;
+      }
+
+      .sidebar li {
+        padding: 12px 2px;
+        border-radius: 8px;
+        transition: background-color 0.3s;
+        display: flex;
+        align-items: center;
+        color: #ffffff;
+      }
+
+      .sidebar li a {
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        font-size: 1rem;
+        font-weight: 500;
+      }
+
+      .sidebar.collapsed li a .icon-name {
+        opacity: 0;
+        width: 0;
+      }
+
+      .sidebar li:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .sidebar li a:hover {
+        color: #ff8c94;
+      }
+
+      .sidebar i {
+        margin-right: 12px;
+        font-size: 1.5rem;
+      }
+
+      .creator {
+        padding-left: 18px;
+        height: 50px;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .sidebar.collapsed .creator .icon-name {
+        opacity: 0;
+      }
+
+      .sidebar.collapsed .creator {
+        padding-left: 2px;
+        background: none;
+      }
+
+      @media (max-width: 600px) {
+        .sidebar {
+          width: 160px;
+        }
+      }
+
+      #toggle-btn {
+        background-color: transparent;
+        border: none;
+        color: #ffffff;
+        font-size: 1.8rem;
+        cursor: pointer;
+        margin-bottom: 20px;
+        transition: transform 0.3s ease;
+        position: absolute;
+      }
+
+      #toggle-btn:focus {
+        outline: none;
+      }
+
+      .content {
+        padding: 20px; /* Add padding for content */
+        border: 2px solid black;
+        height: 100vh; /* Full height */
+        overflow-y: auto; /* Allow scrolling if content overflows */
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar">
+      <button id="toggle-btn"><i class="bx bx-menu"></i></button>
+      <div class="sidebar-upp">
+        <div class="sidebar-logo">MySidebar</div>
+        <div class="sidebar-search">
+          <i class="bx bx-search-alt-2" id="search-icon"></i>
+          <input type="text" placeholder="Search..." />
+        </div>
+        <ul>
+          <li>
+            <a href="">
+              <i class="bx bx-home"></i>
+              <div class="icon-name">Home</div>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i class="bx bx-info-circle"></i>
+              <div class="icon-name">About</div>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i class="bx bx-phone-call"></i>
+              <div class="icon-name">Contact</div>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i class="bx bx-layer"></i>
+              <div class="icon-name">Tasks</div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="sidebar-low">
+        <ul>
+          <li>
+            <a href="">
+              <i class="bx bx-cog"></i>
+              <div class="icon-name">Settings</div>
+            </a>
+          </li>
+        </ul>
+        <div class="creator">
+          <i class="bx bxs-heart" style="color: #ff6b6b"></i>
+          <div class="icon-name">Made with Love</div>
+        </div>
+      </div>
+    </div>
+    <div class="content">
+      <h1>Welcome to My Sidebar</h1>
+      <p>This is a sample content area where you can display information related to the selected sidebar item.</p>
+    </div>
+    <script>
+      document
+        .getElementById("toggle-btn")
+        .addEventListener("click", function () {
+          document.querySelector(".sidebar").classList.toggle("collapsed");
+        });
+    </script>
+  </body>
+</html>

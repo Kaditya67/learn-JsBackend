@@ -1,0 +1,48 @@
+<!doctype html>
+<!-- npx tailwindcss -i ./src/input.css -o ./src/output.css --watch -->
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <style>
+    @keyframes spin-inner {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-360deg); }
+    }
+
+    .spin-slow {
+      animation: spin-inner 4s linear infinite; 
+    }
+
+    .spin-fast {
+      animation: spin-inner 2s linear infinite; 
+    }
+
+    @keyframes spin-outer {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .spin-outer-slow {
+      animation: spin-outer 4s linear infinite; 
+    }
+
+    .spin-outer-fast {
+      animation: spin-outer 1s linear infinite; 
+    }
+
+    .circle-round {
+      width: 80px; 
+      height: 80px; 
+    }
+  </style>
+</head>
+<body class="flex justify-center items-center h-screen">
+  <div class="parent p-16 bg-red-500 rounded-2xl flex items-center justify-center spin-outer-slow">
+    <div class="child p-16 bg-yellow-500 rounded-lg spin-fast relative">
+      <div class="circle-round rounded-full bg-green-400 z-10"></div>
+    </div> 
+  </div>
+</body>
+</html>

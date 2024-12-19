@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <style>
+      body {
+        background-image: url("../images/colors.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #1a1a1a;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .card {
+        background-color: rgba(
+          213,
+          212,
+          212,
+          0.3
+        ); /* Change the alpha value for more or less transparency */
+        border-radius: 8px;
+        padding: 30px;
+        width: 300px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        color: #0f4494;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .icon {
+        font-size: 48px;
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      .input-group {
+        background-color: #fff;
+        border-radius: 8px;
+        outline: none;
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+      .input-group i {
+        padding-left: 10px;
+        margin-right: 10px;
+        color: #0f4494;
+      }
+      input {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        background-color: #fff;
+        transition: border-color 0.3s;
+      }
+      input:focus {
+        outline: none;
+      }
+      button {
+        margin: 0 0;
+        background-color: #07ac93;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #0741ac;
+      }
+      #error-message {
+        color: red;
+        text-align: center;
+        display: none;
+        margin-bottom: 15px;
+      }
+      .footer-links {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        font-size: 14px; /* Adjust font size for better readability */
+      }
+      .footer-links p {
+        margin: 0;
+        color: #ffffff; /* Change color for better visibility */
+        cursor: pointer; /* Change cursor to pointer */
+        margin-bottom: 10px;
+      }
+      .footer-links p:hover {
+        text-decoration: underline; /* Underline on hover */
+      }
+    </style>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="card">
+      <h2><i class="bx bx-user icon"></i></h2>
+      <div id="error-message">Invalid email or password</div>
+      <form method="POST" onsubmit="return validateForm()">
+        <div class="input-group">
+          <i class="bx bx-envelope"></i>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            aria-label="Email"
+            required
+          />
+        </div>
+        <div class="input-group">
+          <i class="bx bx-lock-alt"></i>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            aria-label="Password"
+            required
+          />
+        </div>
+        <div class="footer-links">
+          <p>Register Here</p>
+          <p>Forgot password?</p>
+        </div>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+    <script>
+      function validateForm() {
+        const email = document.querySelector('input[name="email"]').value;
+        const password = document.querySelector('input[name="password"]').value;
+        const errorMessage = document.getElementById("error-message");
+
+        // Basic validation
+        if (!email || !password) {
+          errorMessage.style.display = "block";
+          return false; // Prevent form submission
+        }
+
+        // Hide error message if validation passes
+        errorMessage.style.display = "none";
+        return true; // Allow form submission
+      }
+    </script>
+  </body>
+</html>
